@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            
             $table->foreignId('address_id');
             $table->foreign('address_id')->references('id')->on('user_addresses')->onDelete('cascade')->onUpdate('cascade');
+            
             $table->foreignId('coupon_id')->nullable();
             $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade')->onUpdate('cascade');
+            
             $table->tinyInteger('status')->default(0);
             $table->unsignedInteger('total_amount');
             $table->unsignedInteger('delivery_amount')->default(0);
